@@ -15,7 +15,7 @@ app.use(routes);
 //database and port
 mongoose.connect(`mongodb+srv://ashvdk:I4OqnhVtjKg0q4RJ@cluster0-5eb4q.mongodb.net/test?retryWrites=true&w=majority`)
 .then(result => {
-    app.listen(3300,()=>console.log("Listening and connected to database"));
+    app.listen(3400,()=>console.log("Listening and connected to database"));
 })
 .catch(err => {
     console.log(err);
