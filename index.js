@@ -7,7 +7,6 @@ const routes = require('./Route')
 //helpers
 app.use(cors())
 app.use(bodyParser.json())
-app.options('*', cors())
 app.use(routes);
 
 
