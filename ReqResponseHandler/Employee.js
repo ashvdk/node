@@ -46,39 +46,38 @@ module.exports.get = (req,res) => {
 
 //login employee
 module.exports.login = (req,res) => {
-    res.send("came to backend");
-    // const {username,password} = req.body;
-    // let myUser;
-    // Employee.findOne({username:username})
-    // .then((user)=>{
-    //     if(user)
-    //     {
-    //         myUser = user;
-    //         bcrypt.compare(password,user.password).then(isEqual => {
-    //             if(isEqual)
-    //             {
-    //                 const token = jwt.sign(
-    //                     {
-    //                         email:myUser.email,
-    //                         userId:myUser._id.toString()
-    //                     },
-    //                     'ednu454@%kljfdlfbBKJGGKFJN',
-    //                     {expiresIn:'1h'}
-    //                 );
-    //                 res.send({"message":"Logged in successfully","type":"success","token":token,"user":myUser.roles});
-    //             }
-    //             else
-    //             {
-    //                 res.send({"message":"Incorrect username or password","type":"error"});
-    //             }
-    //         })
-    //     }
-    //     else
-    //     {   
-    //         res.send({"message":"Incorrect username or password","type":"error"});
-    //     }
-    // })
-    // .catch(err => console.log(err));
+    const {username,password} = req.body;
+    let myUser;
+    Employee.findOne({username:username})
+    .then((user)=>{
+        if(user)
+        {
+            myUser = user;
+            bcrypt.compare(password,user.password).then(isEqual => {
+                if(isEqual)
+                {
+                    const token = jwt.sign(
+                        {
+                            email:myUser.email,
+                            userId:myUser._id.toString()
+                        },
+                        'ednu454@%kljfdlfbBKJGGKFJN',
+                        {expiresIn:'1h'}
+                    );
+                    res.send({"message":"Logged in successfully","type":"success","token":token,"user":myUser.roles});
+                }
+                else
+                {
+                    res.send({"message":"Incorrect username or password","type":"error"});
+                }
+            })
+        }
+        else
+        {   
+            res.send({"message":"Incorrect username or password","type":"error"});
+        }
+    })
+    .catch(err => console.log(err));
 }
 
 module.exports.getLogin = (req,res)=>{

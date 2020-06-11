@@ -5,13 +5,12 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const routes = require('./Route')
 //helpers
-// app.use(cors())
-// app.use(bodyParser.json())
-// app.use(routes);
+app.use(cors())
+app.use(bodyParser.json())
+app.options('*', cors())
+app.use(routes);
 
-app.use((req,res)=>{
-    res.send('<p>How are you</p>');
-})
+
 
 //database and port
 mongoose.connect(`mongodb+srv://ashvdk:I4OqnhVtjKg0q4RJ@cluster0-5eb4q.mongodb.net/test?retryWrites=true&w=majority`)
