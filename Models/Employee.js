@@ -21,6 +21,10 @@ var EmployeeSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    roles:{
+        type:Array,
+        required:true
+    },
     dateinmillisec: { type: Number, required:true }
 });
 
